@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Email Service Center API
+  description: Write an Email to the right service center
+  version: 1.0.0
+paths:
+  /send-email:
+    post:
+      summary: Send an email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                  description: The email body
+                title:
+                  type: string
+                  description: The email title
+                recipient:
+                  type: string
+                  description: The recipient's address
+                sender:
+                  type: string
+                  description: The sender's address
+              required:
+                - body
+                - title
+                - recipient
+                - sender
+      responses:
+        '200':
+          description: Email sent successfully
+        '400':
+          description: Invalid input
